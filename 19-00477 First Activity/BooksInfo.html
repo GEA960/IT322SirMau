@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<head>
+  <style type = "text/css">
+    body{
+    font-family:"Times New Roman";
+    }
+    
+    th {
+
+      background-color: black;
+      color: white;
+
+    }
+
+    td {
+
+      background-color: lightgrey;
+    }
+
+    table,th,td {
+      font-family:"Arial";
+      border : 1px solid;
+      border-color: black;
+      border-collapse: collapse;
+    }
+
+    th,td {
+      padding: 5px;
+      }
+
+    input {
+      width: 200px;
+      height: 20px;
+      border: 1px solid black;
+      padding: 3px;
+    }
+
+    button {
+      background-color: green;
+      color: #ffffff;
+      font-size: 15px;
+    }
+    
+
+    .container{
+      display: flex;
+      flex-wrap: wrap;
+       }
+
+    .container1{
+      border-right: 2px dotted black;
+      width: 25%;
+      box-sizing: border-box;
+      text-align: center;
+      padding: 50px;
+      background-color: rgba(168, 164, 168, 0.514);
+      border-radius: 20px;
+  }
+  .container2{
+      padding: 50px;
+      width: 75%;
+      text-align: center;
+      box-sizing: border-box;
+      background-color: rgb(93, 160, 93);
+      border-radius: 20px;
+  }
+
+  </style>
+  </head>
+
+<body>
+
+<div class="container">
+
+  <div class="container1">
+  <p><b><i>Click on a Common/Botanical to display the Plant's information.</i></b></p>
+  <label for="bkcommon">COMMON: </label>  <input type ="text" name = "auth" id="bkcommon"><br><br>
+  <label for="bkbotanical">BOTANICAL: </label> <input type ="text" name = "titlex" id="bkbotanical"><br><br>
+  <label for="bkzone">ZONE: </label> <input type ="text" name = "pdate" id="bkzone"><br><br>
+  <label for="bklight">LIGHT: </label> <input type ="text" name = "genre" id="bklight"><br><br>
+  <label for="bkprice">PRICE: </label><input type ="text" name = "price" id="bkprice"><br><br>
+  <label for="bkavail">AVAILABILITY: </label><input type ="text" name = "desc" id="bkavail"><br><br>
+  <button onclick="submitInput();">Submit</button><br><br>
+</div>
+
+<div class="container2">
+  <table id='demo'></table>
+</div>
+
+
+
+
+
+  <script>
+    
+    var x,xmlhttp,xmlDoc
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", "plant_catalog.xml", false);
+    xmlhttp.send();
+    xmlDoc = xmlhttp.responseXML; 
+    x = xmlDoc.getElementsByTagName("PLANT");
+    
+    table="<tr><th>COMMON</th><th>BOTANICAL</th><th>ZONE</th><th>LIGHT</th><th>PRICE</th><th>AVAILABILITY</th></tr>";
+  
+    for (i = 0; i <x.length; i++) { 
+      table += "<tr displayBookDetails(" + i + ")><td>";
+      table += x[i].getElementsByTagName("COMMON")[0].childNodes[0].nodeValue;
+      table += "</td><td>";
+      table += x[i].getElementsByTagName("BOTANICAL")[0].childNodes[0].nodeValue;
+      table += "</td><td>";
+      table += x[i].getElementsByTagName("ZONE")[0].childNodes[0].nodeValue;
+      table += "</td><td>";
+      table += x[i].getElementsByTagName("LIGHT")[0].childNodes[0].nodeValue;
+      table += "</td><td>";
+      table += x[i].getElementsByTagName("PRICE")[0].childNodes[0].nodeValue;
+      table += "</td><td>";
+      table += x[i].getElementsByTagName("AVAILABILITY")[0].childNodes[0].nodeValue;
+      table += "</td></tr>";
+    }
+
+   
+    document.getElementById("demo").innerHTML = table;
+
+     var table = document.getElementById('demo'), rowidx;
+                
+                for(var i = 1; i < table.rows.length; i++)
+                {
+                    table.rows[i].onclick = function()
+                    {
+                         rowidx = this.rowIndex;
+                         document.getElementById("bkcommon").value = this.cells[0].innerHTML;
+                         document.getElementById("bkbotanical").value = this.cells[1].innerHTML;
+                         document.getElementById("bkzone").value = this.cells[2].innerHTML;
+                         document.getElementById("bklight").value = this.cells[3].innerHTML;
+                         document.getElementById("bkprice").value = this.cells[4].innerHTML;
+                         document.getElementById("bkavail").value = this.cells[5].innerHTML;
+                    };
+                }
+
+               function submitInput()
+            {
+                table.rows[rowidx].cells[0].innerHTML = document.getElementById("bkcommon").value;
+                table.rows[rowidx].cells[1].innerHTML = document.getElementById("bkbotanical").value;
+                table.rows[rowidx].cells[2].innerHTML = document.getElementById("bkzone").value;
+                table.rows[rowidx].cells[3].innerHTML = document.getElementById("bklight").value;
+                table.rows[rowidx].cells[4].innerHTML = document.getElementById("bkprice").value;
+                table.rows[rowidx].cells[5].innerHTML = document.getElementById("bkavail").value;
+            }
+
+  </script>
+  
+
+</body>
+</html>
