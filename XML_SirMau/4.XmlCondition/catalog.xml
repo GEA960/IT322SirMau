@@ -1,0 +1,39 @@
+<CATALOG>
+
+<CD>
+<TITLE> Empire Burlesque </TITLE>
+<ARTIST> Bob Dylan </ARTIST>
+<COUNTRY> USA </COUNTRY>
+<COMPANY> Columbia </COMPANY>
+<PRICE> 10.00 </PRICE>
+<YEAR> 1985 </YEAR>
+</CD>
+
+<CD>
+<TITLE> Empire Burlesque 1</TITLE>
+<ARTIST> Bob Dylan 1</ARTIST>
+<COUNTRY> USA 1</COUNTRY>
+<COMPANY> Columbia 1</COMPANY>
+<PRICE> 10.00</PRICE>
+<YEAR> 1985</YEAR>
+</CD>
+
+<CD>
+<TITLE> Empire Burlesque 2</TITLE>
+<ARTIST> Bob Dylan 2</ARTIST>
+<COUNTRY> USA 2</COUNTRY>
+<COMPANY> Columbia 2</COMPANY>
+<PRICE> 10.00</PRICE>
+<YEAR> 1985</YEAR>
+</CD>
+
+<CD>
+<TITLE> Empire Burlesque3</TITLE>
+<ARTIST> Bob Dylan3</ARTIST>
+<COUNTRY> USA3</COUNTRY>
+<COMPANY> Columbia3</COMPANY>
+<PRICE> 10.00</PRICE>
+<YEAR> 1985</YEAR>
+</CD>
+
+</CATALOG>

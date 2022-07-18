@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XML Demonstration</title>
+    </head>
+    <body>
+        <h2>Parsing</h2>
+            <p id= "demo"></p>
+    </body>
+
+<script>
+    var text, parser, xmlDoc;
+    
+    text = "<playlist><song>" + "<title>Walong Bilyon</title>" + "<artist> TJ Monterde</artist>" + "<year>2022</year>" + "</song></playlist>";
+    
+    parser = new DOMParser();
+    xmlDoc = parser.parseFromString(text,"text/xml");
+
+    document.getElementById("demo").innerHTML = xmlDoc.
+        getElementsByTagName("title")[0].childNodes[0].nodeValue;
+</script>
+</html>

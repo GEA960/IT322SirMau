@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Displaying Contents of XML File</title>
+    </head>
+    <body>
+        <h2>Displaying Contents of XML File</h2>
+        <div id = "demo">
+        <button type = "button" onclick = "loadXMLDoc()"> Load XML file</button>
+    
+        </div>
+    </body>
+
+<script>
+    function loadXMLDoc() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "catalog.xml", true);
+        xhttp.send();
+
+        xhttp.onreadystatechange = function() {
+            myFunction(this);
+        };
+    }
+
+    function myFunction(xml){
+        
+        var receiver, idx, xmlDoc, txt;
+        xmlDoc = xml.responseXML;
+        txt = "";
+        receiver = xmlDoc.getElementsByTagName("TITLE");
+
+        for (idx = 0; idx < receiver.length; idx++) {
+            txt += receiver[idx].childNodes[0].nodeValue + "<br>";
+        }
+        document.getElementById("demo").innerHTML = txt;
+    }
+</script>
+
+
+
+</html>
